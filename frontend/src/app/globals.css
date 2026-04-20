@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-base: #07070f;
+  --bg-surface-1: #0d0d1e;
+  --bg-surface-2: #12122a;
+  --bg-surface-3: #181832;
+  --brand: #5b7aff;
+  --brand-light: #8ba0ff;
+  --brand-dark: #3a55d4;
+  --brand-glow: rgba(91, 122, 255, 0.35);
+  --accent: #a78bfa;
+  --accent-glow: rgba(167, 139, 250, 0.2);
+  --success: #34d399;
+  --warning: #fbbf24;
+  --text-primary: #eeeeff;
+  --text-secondary: #9898c0;
+  --text-muted: #55556a;
+  --border: rgba(91, 122, 255, 0.10);
+  --border-hover: rgba(91, 122, 255, 0.26);
+  --border-focus: rgba(91, 122, 255, 0.5);
+  --glass-bg: rgba(18, 18, 44, 0.55);
+  --glass-strong: rgba(11, 11, 30, 0.88);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: 'DM Sans', sans-serif;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 3px; height: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(91,122,255,0.25); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(91,122,255,0.45); }
+
+@layer components {
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+  }
+  .glass-strong {
+    background: var(--glass-strong);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    border: 1px solid var(--border);
+  }
+  .gradient-brand {
+    background: linear-gradient(135deg, #5b7aff 0%, #8b5cf6 100%);
+  }
+  .gradient-brand-soft {
+    background: linear-gradient(135deg, rgba(91,122,255,0.15) 0%, rgba(139,92,246,0.1) 100%);
+  }
+  .gradient-text {
+    background: linear-gradient(135deg, #8ba0ff 0%, #c4b5fd 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .gradient-text-warm {
+    background: linear-gradient(135deg, #a0c4ff 0%, #c4b5fd 50%, #f9a8d4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .mesh-bg {
+    background-color: var(--bg-base);
+    background-image:
+      radial-gradient(ellipse 90% 60% at 15% -5%, rgba(91,122,255,0.14) 0%, transparent 55%),
+      radial-gradient(ellipse 70% 50% at 85% 105%, rgba(139,92,246,0.12) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 50% at 50% 50%, rgba(91,122,255,0.04) 0%, transparent 70%);
+  }
+  .glow-brand {
+    box-shadow: 0 0 24px var(--brand-glow), 0 0 48px rgba(91,122,255,0.1);
+  }
+  .glow-sm {
+    box-shadow: 0 4px 20px var(--brand-glow);
+  }
+
+  /* Prose chat */
+  .prose-chat {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9375rem;
+    line-height: 1.75;
+    color: var(--text-primary);
+  }
+  .prose-chat h1, .prose-chat h2, .prose-chat h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    margin-top: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+  }
+  .prose-chat h1 { font-size: 1.25rem; }
+  .prose-chat h2 { font-size: 1.1rem; }
+  .prose-chat h3 { font-size: 1rem; }
+  .prose-chat p { margin-bottom: 0.65rem; }
+  .prose-chat p:last-child { margin-bottom: 0; }
+  .prose-chat ul, .prose-chat ol { padding-left: 1.4rem; margin-bottom: 0.65rem; }
+  .prose-chat li { margin-bottom: 0.2rem; }
+  .prose-chat code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    background: rgba(91,122,255,0.13);
+    color: var(--brand-light);
+    padding: 0.15em 0.45em;
+    border-radius: 5px;
+    border: 1px solid rgba(91,122,255,0.15);
+  }
+  .prose-chat pre {
+    background: rgba(7,7,18,0.85);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem;
+    overflow-x: auto;
+    margin-bottom: 0.75rem;
+  }
+  .prose-chat pre code { background: none; padding: 0; border: none; color: #c4d0ff; }
+  .prose-chat a { color: var(--brand-light); text-decoration: underline; text-underline-offset: 2px; }
+  .prose-chat blockquote {
+    border-left: 3px solid var(--brand);
+    padding-left: 0.85rem;
+    color: var(--text-secondary);
+    margin: 0.75rem 0;
+    font-style: italic;
+  }
+  .prose-chat table { width: 100%; border-collapse: collapse; margin-bottom: 0.75rem; font-size: 0.875rem; }
+  .prose-chat th, .prose-chat td { border: 1px solid var(--border); padding: 0.5rem 0.75rem; text-align: left; }
+  .prose-chat th { background: rgba(91,122,255,0.1); font-weight: 600; font-family: 'Syne', sans-serif; }
+  .prose-chat strong { font-weight: 600; color: var(--text-primary); }
+  .prose-chat hr { border: none; border-top: 1px solid var(--border); margin: 0.75rem 0; }
+}
+
+/* Typing animation */
+@keyframes typing-dot {
+  0%, 80%, 100% { opacity: 0.2; transform: scale(0.65) translateY(0); }
+  40% { opacity: 1; transform: scale(1) translateY(-2px); }
+}
+.typing-dot { animation: typing-dot 1.4s ease-in-out infinite; }
+.typing-dot:nth-child(2) { animation-delay: 0.18s; }
+.typing-dot:nth-child(3) { animation-delay: 0.36s; }
+
+/* Shimmer for loading */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, var(--bg-surface-2) 25%, var(--bg-surface-3) 50%, var(--bg-surface-2) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Focus ring */
+*:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; border-radius: 4px; }
+
+/* Selection */
+::selection { background: rgba(91,122,255,0.28); color: var(--text-primary); }
+
+/* Fade-in */
+@keyframes fade-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.fade-in { animation: fade-in 0.4s ease-out both; }
+
+/* ── UI IMPROVEMENTS (Fix #7) ─────────────────────────────────────────────── */
+
+/* Smoother message hover reveals */
+.group:hover .opacity-0 { opacity: 1; }
+
+/* Better focus ring on textareas */
+textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 1.5px rgba(91, 122, 255, 0.45);
+}
+
+/* Edit mode textarea */
+.edit-textarea {
+  background: transparent;
+  resize: none;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* Smoother scale on example cards */
+.example-card {
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.example-card:hover {
+  transform: scale(1.015);
+}
+
+/* Delete confirm modal backdrop blur */
+.modal-backdrop {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Message bubble entrance - stagger */
+@keyframes bubble-in {
+  from { opacity: 0; transform: translateY(10px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.bubble-in {
+  animation: bubble-in 0.25s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Copy button pulse */
+@keyframes copy-success {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+.copy-success { animation: copy-success 0.25s ease; }
+
+/* Sidebar session hover — smoother */
+.session-item {
+  transition: background 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+}
+
+/* Input send button glow on hover */
+.send-btn:hover {
+  box-shadow: 0 0 16px rgba(91, 122, 255, 0.45);
+}
+
+/* Improved scrollbar for message list */
+.messages-scroll::-webkit-scrollbar { width: 4px; }
+.messages-scroll::-webkit-scrollbar-thumb {
+  background: rgba(91, 122, 255, 0.2);
+  border-radius: 99px;
+}
+.messages-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(91, 122, 255, 0.4);
+}
+
+/* Subtle row highlight on tool trace */
+.tool-row:hover {
+  background: rgba(91, 122, 255, 0.05);
+  border-radius: 8px;
+}
+
+/* Edit pencil icon — visible on row hover */
+.edit-trigger {
+  transition: opacity 0.15s ease, color 0.15s ease;
+}
